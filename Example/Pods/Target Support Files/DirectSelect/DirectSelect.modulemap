@@ -1,0 +1,6 @@
+framework module DirectSelect {
+  umbrella header "DirectSelect-umbrella.h"
+
+  export *
+  module * { export * }
+}
