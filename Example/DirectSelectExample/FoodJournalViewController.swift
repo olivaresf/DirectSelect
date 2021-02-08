@@ -94,32 +94,36 @@ class FoodJournalViewController: UIViewController {
 																	   options: .directionLeadingToTrailing,
 																	   metrics: nil,
 																	   views: ["view": selectorView])
+			let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.firstDSSeletorView!])
+			let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.secondDSSeletorView!])
+			let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.thirdDSSeletorView!])
+			let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
 		}
 		
         if firstDSSeletorView == nil {
             
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.firstDSSeletorView!])
+            
             mealContainer.addConstraints(horizontalConstraints)
             mealContainer.addConstraints(verticalConstraints)
         }
         
         if secondDSSeletorView == nil {
             
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.secondDSSeletorView!])
+            
             categoryContainer.addConstraints(horizontalConstraints)
             categoryContainer.addConstraints(verticalConstraints)
         }
         
         if thirdDSSeletorView == nil {
             
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.thirdDSSeletorView!])
+            
             dishContainer.addConstraints(horizontalConstraints)
             dishContainer.addConstraints(verticalConstraints)
         }
         
         if fourthDSSeletorView == nil {
             
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
+            
             quantityContainer.addConstraints(horizontalConstraints)
             quantityContainer.addConstraints(verticalConstraints)
         }
