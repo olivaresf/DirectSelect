@@ -76,8 +76,21 @@ class FoodJournalViewController: UIViewController {
     }
     
     private func addInitialViews() {
+		
+		let dataModels = [
+			giveDataModel1(),
+			giveDataModel2(),
+			giveDataModel3(),
+			giveDataModel4()
+		]
+		
+		let selectorViews = dataModels.map { dataModel in
+			let selectorView = DSInitialView.createInstance(model: dataModel, delegate: self)
+			selectorView.translatesAutoresizingMaskIntoConstraints = false
+		}
+		
         if firstDSSeletorView == nil {
-            firstDSSeletorView = DSInitialView.createInstance(model: giveDataModel1(), delegate: self)
+            
             firstDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
             mealContainer.addSubview(firstDSSeletorView!)
             
@@ -88,7 +101,7 @@ class FoodJournalViewController: UIViewController {
         }
         
         if secondDSSeletorView == nil {
-            secondDSSeletorView = DSInitialView.createInstance(model: giveDataModel2(), delegate: self)
+            
             secondDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
             categoryContainer.addSubview(secondDSSeletorView!)
             
@@ -99,7 +112,7 @@ class FoodJournalViewController: UIViewController {
         }
         
         if thirdDSSeletorView == nil {
-            thirdDSSeletorView = DSInitialView.createInstance(model: giveDataModel3(), delegate: self)
+            
             thirdDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
             
             dishContainer.addSubview(thirdDSSeletorView!)
@@ -111,7 +124,7 @@ class FoodJournalViewController: UIViewController {
         }
         
         if fourthDSSeletorView == nil {
-            fourthDSSeletorView = DSInitialView.createInstance(model: giveDataModel4(), delegate: self)
+            
             fourthDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
             
             quantityContainer.addSubview(fourthDSSeletorView!)
