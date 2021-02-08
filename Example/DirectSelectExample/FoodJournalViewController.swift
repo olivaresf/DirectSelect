@@ -89,11 +89,11 @@ class FoodJournalViewController: UIViewController {
 			(giveDataModel4(), quantityContainer)
 		]
 		
-		let selectorViews = dataModels.map { dataModelTuple -> DSInitialView in
-			let selectorView = DSInitialView.createInstance(model: dataModelTuple.0,
+		let selectorViews = dataModels.map { (dataModel, containerView) -> DSInitialView in
+			let selectorView = DSInitialView.createInstance(model: dataModel,
 															delegate: self)
 			selectorView.translatesAutoresizingMaskIntoConstraints = false
-			dataModelTuple.1.addSubview(selectorView)
+			containerView.addSubview(selectorView)
 			
 			let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
 																	   options: .directionLeadingToTrailing,
@@ -103,8 +103,8 @@ class FoodJournalViewController: UIViewController {
 																	 options: .directionLeadingToTrailing,
 																	 metrics: nil,
 																	 views: ["view": selectorView])
-			dataModelTuple.1.addConstraints(horizontalConstraints)
-			dataModelTuple.1.addConstraints(verticalConstraints)
+			containerView.addConstraints(horizontalConstraints)
+			containerView.addConstraints(verticalConstraints)
 			
 			return selectorView
 		}
