@@ -77,6 +77,8 @@ class FoodJournalViewController: UIViewController {
     
     private func addInitialViews() {
 		
+		guard firstDSSeletorView == nil, secondDSSeletorView == nil, thirdDSSeletorView == nil, fourthDSSeletorView == nil else { return }
+		
 		let dataModels : [(DSDataModel, UIView)] = [
 			(giveDataModel1(), mealContainer),
 			(giveDataModel2(), categoryContainer),
@@ -103,7 +105,11 @@ class FoodJournalViewController: UIViewController {
 			
 			return selectorView
 		}
-		
+
+		firstDSSeletorView = selectorViews[0]
+		secondDSSeletorView = selectorViews[1]
+		thirdDSSeletorView = selectorViews[2]
+		fourthDSSeletorView = selectorViews[3]
     }
     
     private func showIntroView() {
