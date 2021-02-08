@@ -91,7 +91,7 @@ class FoodJournalViewController: UIViewController {
 		
         if firstDSSeletorView == nil {
             
-            firstDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
+            
             mealContainer.addSubview(firstDSSeletorView!)
             
             let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.firstDSSeletorView!])
@@ -102,7 +102,7 @@ class FoodJournalViewController: UIViewController {
         
         if secondDSSeletorView == nil {
             
-            secondDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
+            
             categoryContainer.addSubview(secondDSSeletorView!)
             
             let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.secondDSSeletorView!])
@@ -113,7 +113,7 @@ class FoodJournalViewController: UIViewController {
         
         if thirdDSSeletorView == nil {
             
-            thirdDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
+            
             
             dishContainer.addSubview(thirdDSSeletorView!)
             
@@ -125,7 +125,7 @@ class FoodJournalViewController: UIViewController {
         
         if fourthDSSeletorView == nil {
             
-            fourthDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
+            
             
             quantityContainer.addSubview(fourthDSSeletorView!)
             
