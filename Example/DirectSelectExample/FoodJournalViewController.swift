@@ -76,51 +76,43 @@ class FoodJournalViewController: UIViewController {
     }
     
     private func addInitialViews() {
-        if firstDSSeletorView == nil {
-            firstDSSeletorView = DSInitialView.createInstance(model: giveDataModel1(), delegate: self)
-            firstDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
-            mealContainer.addSubview(firstDSSeletorView!)
-            
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.firstDSSeletorView!])
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.firstDSSeletorView!])
-            mealContainer.addConstraints(horizontalConstraints)
-            mealContainer.addConstraints(verticalConstraints)
-        }
-        
-        if secondDSSeletorView == nil {
-            secondDSSeletorView = DSInitialView.createInstance(model: giveDataModel2(), delegate: self)
-            secondDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
-            categoryContainer.addSubview(secondDSSeletorView!)
-            
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.secondDSSeletorView!])
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.secondDSSeletorView!])
-            categoryContainer.addConstraints(horizontalConstraints)
-            categoryContainer.addConstraints(verticalConstraints)
-        }
-        
-        if thirdDSSeletorView == nil {
-            thirdDSSeletorView = DSInitialView.createInstance(model: giveDataModel3(), delegate: self)
-            thirdDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
-            
-            dishContainer.addSubview(thirdDSSeletorView!)
-            
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.thirdDSSeletorView!])
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.thirdDSSeletorView!])
-            dishContainer.addConstraints(horizontalConstraints)
-            dishContainer.addConstraints(verticalConstraints)
-        }
-        
-        if fourthDSSeletorView == nil {
-            fourthDSSeletorView = DSInitialView.createInstance(model: giveDataModel4(), delegate: self)
-            fourthDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
-            
-            quantityContainer.addSubview(fourthDSSeletorView!)
-            
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
-            quantityContainer.addConstraints(horizontalConstraints)
-            quantityContainer.addConstraints(verticalConstraints)
-        }
+		
+		guard firstDSSeletorView == nil,
+			  secondDSSeletorView == nil,
+			  thirdDSSeletorView == nil,
+			  fourthDSSeletorView == nil else { return }
+		
+		let dataModels : [(DSDataModel, UIView)] = [
+			(giveDataModel1(), mealContainer),
+			(giveDataModel2(), categoryContainer),
+			(giveDataModel3(), dishContainer),
+			(giveDataModel4(), quantityContainer)
+		]
+		
+		let selectorViews = dataModels.map { (dataModel, containerView) -> DSInitialView in
+			let selectorView = DSInitialView.createInstance(model: dataModel,
+															delegate: self)
+			selectorView.translatesAutoresizingMaskIntoConstraints = false
+			containerView.addSubview(selectorView)
+			
+			let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+																	   options: .directionLeadingToTrailing,
+																	   metrics: nil,
+																	   views: ["view": selectorView])
+			let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
+																	 options: .directionLeadingToTrailing,
+																	 metrics: nil,
+																	 views: ["view": selectorView])
+			containerView.addConstraints(horizontalConstraints)
+			containerView.addConstraints(verticalConstraints)
+			
+			return selectorView
+		}
+
+		firstDSSeletorView = selectorViews[0]
+		secondDSSeletorView = selectorViews[1]
+		thirdDSSeletorView = selectorViews[2]
+		fourthDSSeletorView = selectorViews[3]
     }
     
     private func showIntroView() {
